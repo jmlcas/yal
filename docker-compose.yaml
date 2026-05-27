@@ -1,0 +1,21 @@
+services:
+
+  yal:
+    image: timoreymann/yal:latest
+    container_name: yal
+    restart: unless-stopped
+    ports:
+      - "8200:2024"
+    volumes:
+      - ./config:/app/config
+      - ./icons:/app/icons # optional in case you want to use local icons
+      - ./images:/app/images # contains favicon etc.
+    environment:
+      YAL_PORT: 2024
+      YAL_PAGE_TITLE: My link hub
+      YAL_CONFIG_FOLDER: /app/config
+      YAL_IMAGES_FOLDER: /app/images
+      YAL_MASCOT: mascot # the mascot to display on the left
+      YAL_LOGO: logo # logo to display on the right
+      YAL_BACKGROUND: background # background image for page
+      YAL_FAVICON: favicon # favicon to serve
